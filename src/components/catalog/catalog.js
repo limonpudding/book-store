@@ -22,6 +22,9 @@ const Catalog = () => {
             if (params.authorId) {
                 let data = jsonData.filter(book => book.authors && book.authors.find(author => author.id === parseInt(params.authorId)));
                 setBooks(data);
+            } else if (params.genreId) {
+                let data = jsonData.filter(book => book.genres && book.genres.find(genre => genre.id === parseInt(params.genreId)));
+                setBooks(data);
             } else {
                 setBooks(jsonData);
             }
@@ -35,8 +38,8 @@ const Catalog = () => {
     }, []);
 
     return (
-        <div>
-            <Row xs={"3"}>
+        <div className={'content'}>
+            <Row xs={"2"}>
                 {
                     books.map(book => {
                         return (
